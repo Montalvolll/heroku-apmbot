@@ -5,7 +5,7 @@
     "scripts": {
         "start": "node build/server.js",
         "build": "tsc",
-        "postinstall": "npm run build"
+        "postinstall": "./node_modules/typescript/bin/tsc"
     },
     "dependencies": {
         "@fluentui/react-northstar": "~0.62.0",
