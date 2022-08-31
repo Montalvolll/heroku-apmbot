@@ -26,7 +26,7 @@ export class ApmBotOutgoingWebhook implements IOutgoingWebhook {
         const incoming = req.body as builder.Activity;
 
         // create the response, any Teams compatible responses can be used
-        const message: Partial<builder.Activity> = {
+        let message: Partial<builder.Activity> = {
             type: builder.ActivityTypes.Message
         };
 
