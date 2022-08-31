@@ -48,7 +48,10 @@ export class ApmBotOutgoingWebhook implements IOutgoingWebhook {
             if (msgHash === auth) {
                 // Message was ok and verified
                 // message.text = `Echo ${incoming.text}`;
-                if (incoming.text === "apmbotler testing") {
+                if (
+                    incoming.text === "apmbotler testing" ||
+                    incoming.text === "testing"
+                ) {
                     message.text = "This is an an automated test reply";
                 } else {
                     message.text = "Unknown command";
