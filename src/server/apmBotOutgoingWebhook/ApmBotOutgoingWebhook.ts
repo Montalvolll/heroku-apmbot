@@ -23,7 +23,7 @@ export class ApmBotOutgoingWebhook implements IOutgoingWebhook {
         next: express.NextFunction
     ) {
         // parse the incoming message
-        const incoming = req.body as builder.Activity;
+        let incoming = req.body as builder.Activity;
 
         // create the response, any Teams compatible responses can be used
         let message: Partial<builder.Activity> = {
@@ -44,14 +44,11 @@ export class ApmBotOutgoingWebhook implements IOutgoingWebhook {
                     )
                     .update(msgBuf)
                     .digest("base64");
-
+            console.log(incoming.text);
             if (msgHash === auth) {
                 // Message was ok and verified
                 // message.text = `Echo ${incoming.text}`;
-                if (
-                    incoming.text === "apmbotler testing" ||
-                    incoming.text === "testing"
-                ) {
+                if (incoming.text.includes("testing")) {
                     message.text = "This is an an automated test reply";
                 } else {
                     message.text = "Unknown command";
